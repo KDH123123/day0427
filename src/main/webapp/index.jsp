@@ -7,7 +7,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<a href="board">게시판</a>
+	<a href="board/list">게시판</a>
 	<h1>welcome!</h1>
 </body>
 </html>

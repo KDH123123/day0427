@@ -11,6 +11,7 @@ public class BoardDTO {
 	private int readCount;
 	private LocalDateTime createdDate;
 
+	
 	public int getNo() {
 		return no;
 	}
