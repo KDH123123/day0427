@@ -1,14 +1,14 @@
 package nowon.domain.dto;
 
-public class BoardJoinDTO {
+public class MemberInsertDTO {
 	private String email;
 	private String name;
 	private String pass;
 	
-	public BoardJoinDTO() {
+	public MemberInsertDTO() {
 	}
 		
-	public BoardJoinDTO(String email, String name, String pass) {
+	public MemberInsertDTO(String email, String name, String pass) {
 		this.email = email;
 		this.name = name;
 		this.pass = pass;

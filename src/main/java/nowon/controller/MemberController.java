@@ -14,9 +14,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 
 import nowon.domain.dto.BoardDTO;
 import nowon.domain.dto.BoardInsertDTO;
-import nowon.domain.dto.BoardJoinDTO;
+import nowon.domain.dto.MemberInsertDTO;
 
-@WebServlet(urlPatterns = { "/member/join", "/member/insert" })
+@WebServlet(urlPatterns = { "/member/join", "/member/insert", "/member/login" })
 public class MemberController extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	
@@ -49,7 +49,7 @@ public class MemberController extends HttpServlet {
 			String email = request.getParameter("email");
 			String name = request.getParameter("name");
 			String pass = request.getParameter("pass");
-			BoardJoinDTO dto = new BoardJoinDTO(email, name, pass);
+			MemberInsertDTO dto = new MemberInsertDTO(email, name, pass);
 
 			SqlSession sqlSession = sqlSessionFactory.openSession(true);// true=auto commit
 
@@ -57,7 +57,13 @@ public class MemberController extends HttpServlet {
 			sqlSession.insert("membermapper.join", dto);// mapper호출,데이터 넘겨주는 공간
 			sqlSession.close();
 			
-			path="/WEB-INF/member/join.jsp";//배포가 여기서 부터 되기 때문에 주소 수정 필요. 아직도 / 넣고 안 넣고 의미 모르겠음.
+			String msg=name + "님의 회원가입이 완료되었습니다";
+			request.setAttribute("msg", msg);
+			
+			//로그인 페이지로 이동
+			path="/WEB-INF/member/login.jsp";// "/"넣고 안 넣고 의미 모르겠음.
+		}else if(key.equals("login")) {
+			path="/WEB-INF/member/login.jsp";
 		}
 		//페이지 이동
 		if(path!=null) {
