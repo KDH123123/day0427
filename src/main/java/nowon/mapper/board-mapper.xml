@@ -28,5 +28,7 @@
 		set subject=#{subject}, content=#{content}
 		where no=#{no}
 	</update>
+	
+
 
 </mapper>
